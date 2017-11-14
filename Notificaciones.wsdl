@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WL5G3N0:definitions
+     name="Utilerias"
+     targetNamespace="http://services.blog.com/Utilerias"
+     xmlns:WL5G3N3="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:WL5G3N2="http://services.blog.com/Utilerias"
+     xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:WL5G3N1="http://elements.blog.com/Utilerias"
+    >
+    <WL5G3N0:types>
+        <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:client="http://services.blog.com/Utilerias"
+             xmlns:ped="http://elements.blog.com/Utilerias" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://elements.blog.com/Utilerias" schemaLocation="xsd/Notificaciones_SCHEMA_2FUtilerias_2FResources_2FXSD_2FutilNotificacion_ELEMENTOS.xsd"/>
+        </xsd:schema>
+    </WL5G3N0:types>
+    <WL5G3N0:message name="notificacionAltaProductosRequest">
+        <WL5G3N0:part name="parameters" element="WL5G3N1:notificacionAltaProductosRequest"/>
+        <WL5G3N0:part name="requestHeader" element="WL5G3N1:requestHeader"/>
+    </WL5G3N0:message>
+    <WL5G3N0:message name="notificacionAltaProductosResponse">
+        <WL5G3N0:part name="parameters" element="WL5G3N1:notificacionAltaProductosResponse"/>
+    </WL5G3N0:message>
+    <WL5G3N0:message name="notificacionAltaProductosFault">
+        <WL5G3N0:part name="parameters" element="WL5G3N1:notificacionAltaProductosFault"/>
+    </WL5G3N0:message>
+    <WL5G3N0:portType name="UtileriasPortType">
+        <WL5G3N0:operation name="notificacionAltaProductos">
+            <WL5G3N0:input message="WL5G3N2:notificacionAltaProductosRequest"/>
+            <WL5G3N0:output message="WL5G3N2:notificacionAltaProductosResponse"/>
+            <WL5G3N0:fault name="fault" message="WL5G3N2:notificacionAltaProductosFault"/>
+        </WL5G3N0:operation>
+    </WL5G3N0:portType>
+    <WL5G3N0:binding name="UtileriasBinding" type="WL5G3N2:UtileriasPortType">
+        <WL5G3N3:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <WL5G3N0:operation name="notificacionAltaProductos">
+            <WL5G3N3:operation style="document" soapAction="notificacionAltaProductos"/>
+            <WL5G3N0:input>
+                <WL5G3N3:header message="WL5G3N2:notificacionAltaProductosRequest" part="requestHeader" use="literal"/>
+                <WL5G3N3:body use="literal" parts="parameters"/>
+            </WL5G3N0:input>
+            <WL5G3N0:output>
+                <WL5G3N3:body use="literal"/>
+            </WL5G3N0:output>
+        </WL5G3N0:operation>
+    </WL5G3N0:binding>
+    <WL5G3N0:service name="UtileriasBindingQSService">
+        <WL5G3N0:port name="UtileriasBindingQSPort" binding="WL5G3N2:UtileriasBinding">
+            <WL5G3N3:address location="http://Sandra_SPS-PC:8011/Utilerias/Notificaciones"/>
+        </WL5G3N0:port>
+    </WL5G3N0:service>
+</WL5G3N0:definitions>
